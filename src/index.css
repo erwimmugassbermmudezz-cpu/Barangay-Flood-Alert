@@ -1,0 +1,541 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Barangay Flood Alert Design System - Ocean Emergency Theme */
+
+@layer base {
+  :root {
+    /* Ocean Depths Theme - Dark Mode Primary */
+    --background: 210 100% 4%;
+    --foreground: 210 40% 98%;
+
+    /* Glass Cards */
+    --card: 210 75% 6%;
+    --card-foreground: 210 40% 98%;
+
+    /* Interactive Elements */
+    --popover: 210 75% 8%;
+    --popover-foreground: 210 40% 98%;
+
+    /* Brand Primary - Cyan to Blue Gradient Base */
+    --primary: 195 100% 50%;
+    --primary-foreground: 210 100% 98%;
+
+    /* Brand Secondary - Deep Blue */
+    --secondary: 220 100% 50%;
+    --secondary-foreground: 210 40% 98%;
+
+    /* Subtle Elements */
+    --muted: 210 50% 12%;
+    --muted-foreground: 210 20% 65%;
+
+    /* Brand Accent - Bright Cyan */
+    --accent: 190 100% 55%;
+    --accent-foreground: 210 40% 98%;
+
+    /* Critical Status - Emergency Red */
+    --destructive: 0 100% 60%;
+    --destructive-foreground: 0 0% 100%;
+
+    /* Interface Elements */
+    --border: 210 50% 15%;
+    --input: 210 50% 10%;
+    --ring: 210 100% 50%;
+
+    --radius: 1rem;
+
+    /* Flood Status Colors - Improved Contrast (4.5:1 minimum) */
+    --status-safe: 158 64% 52%;
+    --status-caution: 45 93% 47%;
+    --status-danger: 25 95% 53%;
+    --status-critical: 0 84% 60%;
+
+    /* Glass Effect Variables */
+    --glass-bg: 210 50% 15% / 0.1;
+    --glass-border: 210 40% 80% / 0.2;
+    --glass-shadow: 210 100% 5% / 0.3;
+
+    /* Animation Variables */
+    --wave-speed: 3s;
+    --pulse-speed: 2s;
+    --glow-intensity: 0.6;
+
+    /* Brand Gradients - Modern Teal→Emerald System */
+    --gradient-primary: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);
+    --gradient-secondary: linear-gradient(135deg, hsl(220 100% 40%) 0%, hsl(220 100% 60%) 100%);
+    --gradient-background: linear-gradient(135deg, hsl(210 100% 4%) 0%, hsl(220 100% 8%) 50%, hsl(230 100% 12%) 100%);
+    --gradient-card: linear-gradient(135deg, hsl(210 75% 6%) 0%, hsla(195, 100%, 50%, 0.08) 100%);
+    --gradient-ocean: linear-gradient(135deg, #14b8a6 0%, #10b981 100%);
+    --gradient-safe: linear-gradient(135deg, hsl(158 64% 25%) 0%, hsl(158 64% 35%) 100%);
+    --gradient-caution: linear-gradient(135deg, hsl(45 93% 25%) 0%, hsl(38 90% 40%) 100%);
+    --gradient-danger: linear-gradient(135deg, hsl(25 95% 30%) 0%, hsl(14 90% 45%) 100%);
+    --gradient-critical: linear-gradient(135deg, hsl(0 84% 30%) 0%, hsl(0 84% 45%) 100%);
+
+    /* Depth Shadows */
+    --shadow-glass: 0 8px 32px hsl(var(--glass-shadow));
+    --shadow-float: 0 16px 48px hsl(var(--glass-shadow)), 0 0 0 1px hsl(var(--glass-border));
+    --shadow-emergency: 0 0 60px hsl(var(--status-critical) / 0.5);
+    --shadow-glow: 0 0 40px hsl(var(--primary) / var(--glow-intensity));
+
+    --sidebar-background: 0 0% 98%;
+
+    --sidebar-foreground: 240 5.3% 26.1%;
+
+    --sidebar-primary: 240 5.9% 10%;
+
+    --sidebar-primary-foreground: 0 0% 98%;
+
+    --sidebar-accent: 240 4.8% 95.9%;
+
+    --sidebar-accent-foreground: 240 5.9% 10%;
+
+    --sidebar-border: 220 13% 91%;
+
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+
+  .dark {
+    --background: 222.2 84% 4.9%;
+    --foreground: 210 40% 98%;
+
+    --card: 222.2 84% 4.9%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 222.2 84% 4.9%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 210 40% 98%;
+    --primary-foreground: 222.2 47.4% 11.2%;
+
+    --secondary: 217.2 32.6% 17.5%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 217.2 32.6% 17.5%;
+    --muted-foreground: 215 20.2% 65.1%;
+
+    --accent: 217.2 32.6% 17.5%;
+    --accent-foreground: 210 40% 98%;
+
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 217.2 32.6% 17.5%;
+    --input: 217.2 32.6% 17.5%;
+    --ring: 212.7 26.8% 83.9%;
+    --sidebar-background: 240 5.9% 10%;
+    --sidebar-foreground: 240 4.8% 95.9%;
+    --sidebar-primary: 224.3 76.3% 48%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 240 3.7% 15.9%;
+    --sidebar-accent-foreground: 240 4.8% 95.9%;
+    --sidebar-border: 240 3.7% 15.9%;
+    --sidebar-ring: 217.2 91.2% 59.8%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground overflow-x-hidden;
+    background: var(--gradient-background);
+    min-height: 100vh;
+    padding: 0;
+    margin: 0;
+  }
+
+  /* Enhanced Glass Effects with Brand Colors */
+  .glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(20px);
+    border: 1px solid hsl(var(--glass-border));
+    box-shadow: var(--shadow-glass);
+    border-radius: var(--radius);
+  }
+
+  .glass-float {
+    @apply glass;
+    box-shadow: var(--shadow-float);
+    transform: translateY(-1px);
+  }
+
+  /* Enhanced Cards and Containers */
+  .modern-card {
+    @apply glass p-6 rounded-xl;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.08);
+    border: 1px solid hsla(195, 100%, 50%, 0.1);
+    transition: all 0.3s ease;
+  }
+
+  .modern-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 30px rgba(0, 212, 255, 0.15), 0 2px 6px rgba(0, 0, 0, 0.1);
+    border-color: hsla(195, 100%, 50%, 0.2);
+  }
+
+  /* Enhanced Container Styles */
+  .container-gradient {
+    background: var(--gradient-card);
+    border: 1px solid hsla(195, 100%, 50%, 0.12);
+    backdrop-filter: blur(16px);
+    border-radius: var(--radius);
+    box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+  }
+
+  .container-brand {
+    background: linear-gradient(135deg, 
+      hsla(195, 100%, 50%, 0.05) 0%, 
+      hsla(220, 100%, 50%, 0.05) 100%);
+    border: 1px solid hsla(195, 100%, 50%, 0.15);
+    backdrop-filter: blur(12px);
+    border-radius: var(--radius);
+  }
+
+  /* Status Background Classes */
+  .bg-status-safe {
+    background: var(--gradient-safe);
+  }
+
+  .bg-status-caution {
+    background: var(--gradient-caution);
+  }
+
+  .bg-status-danger {
+    background: var(--gradient-danger);
+  }
+
+  .bg-status-critical {
+    background: var(--gradient-critical);
+    animation: critical-pulse var(--pulse-speed) infinite;
+  }
+
+  /* Emergency Text Colors */
+  .text-status-safe { color: hsl(var(--status-safe)); }
+  .text-status-caution { color: hsl(var(--status-caution)); }
+  .text-status-danger { color: hsl(var(--status-danger)); }
+  .text-status-critical { color: hsl(var(--status-critical)); }
+}
+
+@layer components {
+  /* Enhanced Form Components */
+  .form-group {
+    @apply space-y-3 mb-6;
+  }
+
+  .form-header {
+    @apply mb-6;
+  }
+
+  .form-header h2 {
+    @apply text-2xl font-bold gradient-text mb-2;
+  }
+
+  .form-header p {
+    @apply text-muted-foreground text-sm;
+  }
+
+  /* Enhanced Button Styles */
+  .btn-primary {
+    background: var(--gradient-primary);
+    @apply text-white font-semibold rounded-lg px-6 py-3 shadow-lg;
+    @apply hover:shadow-xl hover:scale-105 transition-all duration-200;
+    @apply focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2;
+  }
+
+  .btn-secondary {
+    @apply bg-secondary/10 border border-secondary/20 text-secondary;
+    @apply hover:bg-secondary/20 hover:border-secondary/30 transition-all duration-200;
+    @apply rounded-lg px-6 py-3 font-medium;
+  }
+
+  .btn-ghost {
+    @apply bg-transparent hover:bg-accent/10 text-foreground;
+    @apply hover:text-accent transition-all duration-200;
+    @apply rounded-lg px-6 py-3 font-medium;
+  }
+  /* Drawer Glassmorphic Card - Used in navigation drawer */
+  .glass-card {
+    @apply rounded-2xl p-5;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15),
+                inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  }
+
+  /* Glassmorphic Water Card - Modern Design */
+  .water-card {
+    @apply w-full max-w-[280px] mx-auto;
+  }
+
+  .water-container-modern {
+    @apply relative w-full h-[220px] rounded-2xl overflow-hidden;
+    background: linear-gradient(180deg, rgba(20, 184, 166, 0.1), rgba(16, 185, 129, 0.15));
+    box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.2);
+  }
+
+  /* Animated Water Fill with Dual Waves */
+  .water-fill-animated {
+    @apply absolute bottom-0 left-0 right-0 transition-all duration-1000 ease-out;
+    background: linear-gradient(180deg, 
+      rgba(20, 184, 166, 0.85) 0%, 
+      rgba(16, 185, 129, 0.75) 50%, 
+      rgba(5, 150, 105, 0.9) 100%);
+  }
+
+  /* Two-layer Wave Animation */
+  .water-wave {
+    @apply absolute top-0 left-0 right-0 h-full opacity-60;
+    background: linear-gradient(90deg, 
+      transparent 0%, 
+      rgba(255, 255, 255, 0.15) 50%, 
+      transparent 100%);
+  }
+
+  .wave-1 {
+    animation: wave-horizontal 3s infinite ease-in-out;
+    transform-origin: center;
+  }
+
+  .wave-2 {
+    animation: wave-horizontal 4.5s infinite ease-in-out reverse;
+    opacity: 0.4;
+  }
+
+  .water-shimmer {
+    @apply absolute top-0 left-0 right-0 h-[3px] opacity-50;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.6), transparent);
+    animation: shimmer-move 2s infinite linear;
+  }
+
+  .water-depth-label {
+    @apply absolute inset-0 flex items-center justify-center z-10;
+    text-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+  }
+
+  /* Status Badge - Compact Design */
+  .status-badge {
+    @apply px-6 py-2 rounded-full font-black text-2xl tracking-wide;
+    text-shadow: 0 2px 10px currentColor;
+    animation: badge-glow 2s infinite alternate;
+    min-height: 44px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .status-badge-safe {
+    @apply text-status-safe;
+    background: rgba(20, 184, 166, 0.15);
+    border: 2px solid hsl(var(--status-safe) / 0.5);
+    box-shadow: 0 4px 20px rgba(20, 184, 166, 0.3);
+  }
+
+  .status-badge-caution {
+    @apply text-status-caution;
+    background: rgba(245, 158, 11, 0.15);
+    border: 2px solid hsl(var(--status-caution) / 0.5);
+    box-shadow: 0 4px 20px rgba(245, 158, 11, 0.3);
+  }
+
+  .status-badge-danger {
+    @apply text-status-danger;
+    background: rgba(239, 68, 68, 0.15);
+    border: 2px solid hsl(var(--status-danger) / 0.5);
+    box-shadow: 0 4px 20px rgba(239, 68, 68, 0.3);
+  }
+
+  .status-badge-critical {
+    @apply text-status-critical;
+    background: rgba(220, 38, 38, 0.2);
+    border: 2px solid hsl(var(--status-critical) / 0.6);
+    box-shadow: 0 4px 24px rgba(220, 38, 38, 0.4);
+    animation: badge-pulse 1s infinite;
+  }
+
+  .status-icon-container {
+    @apply transition-transform duration-300;
+  }
+
+  .status-icon-container:hover {
+    transform: scale(1.1);
+  }
+
+  /* Emergency Button - 44px Tap Target */
+  .btn-emergency {
+    @apply w-full bg-white text-red-600 font-bold py-3 px-6 rounded-xl text-lg;
+    @apply hover:bg-red-50 transition-all duration-200 shadow-xl hover:shadow-2xl;
+    @apply focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2;
+    min-height: 44px;
+  }
+
+  /* Emergency Button */
+  .emergency-btn {
+    @apply fixed bottom-6 right-6 w-16 h-16 rounded-full glass-float;
+    @apply flex items-center justify-center text-white font-bold;
+    @apply transform transition-transform duration-200 hover:scale-110;
+    background: linear-gradient(135deg, hsl(var(--status-critical)), hsl(var(--status-danger)));
+    box-shadow: var(--shadow-emergency);
+    animation: emergency-pulse 1.5s infinite;
+  }
+
+  /* Navigation Tabs */
+  .nav-tab {
+    @apply px-4 py-2 rounded-lg glass transition-all duration-300;
+    @apply text-sm font-semibold text-muted-foreground;
+  }
+
+  .nav-tab.active {
+    @apply text-primary;
+    background: hsl(var(--primary) / 0.1);
+    box-shadow: 0 0 20px hsl(var(--primary) / 0.3);
+  }
+
+  /* Critical Alert Overlay */
+  .critical-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center;
+    background: radial-gradient(circle, hsl(var(--status-critical) / 0.95), hsl(var(--status-critical) / 0.8));
+    backdrop-filter: blur(10px);
+    animation: critical-flash 0.5s infinite alternate;
+  }
+}
+
+@layer utilities {
+  /* Custom Animations - Transform-Only for Performance */
+  @keyframes wave-horizontal {
+    0%, 100% { transform: translateX(0%) scaleY(1); }
+    25% { transform: translateX(-5%) scaleY(1.02); }
+    50% { transform: translateX(0%) scaleY(0.98); }
+    75% { transform: translateX(5%) scaleY(1.02); }
+  }
+
+  /* Drawer Specific Utilities */
+  .duration-280 {
+    transition-duration: 280ms;
+  }
+
+  /* Status Color Utilities for Drawer */
+  .text-status-safe { color: #10b981; }
+  .text-status-caution { color: #f59e0b; }
+  .text-status-danger { color: #f97316; }
+  .text-status-critical { color: #ef4444; }
+  
+  .bg-status-safe\/15 { background-color: rgba(16, 185, 129, 0.15); }
+  .bg-status-caution\/15 { background-color: rgba(245, 158, 11, 0.15); }
+  .bg-status-danger\/15 { background-color: rgba(249, 115, 22, 0.15); }
+  .bg-status-critical\/15 { background-color: rgba(239, 68, 68, 0.15); }
+  
+  .border-status-safe\/50 { border-color: rgba(16, 185, 129, 0.5); }
+  .border-status-caution\/50 { border-color: rgba(245, 158, 11, 0.5); }
+  .border-status-danger\/50 { border-color: rgba(249, 115, 22, 0.5); }
+  .border-status-critical\/50 { border-color: rgba(239, 68, 68, 0.5); }
+
+  @keyframes shimmer-move {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(200%); }
+  }
+
+  @keyframes badge-glow {
+    0% { 
+      text-shadow: 0 2px 10px currentColor;
+      box-shadow: 0 4px 20px currentColor;
+    }
+    100% { 
+      text-shadow: 0 2px 15px currentColor, 0 0 25px currentColor;
+      box-shadow: 0 4px 25px currentColor, 0 0 35px currentColor;
+    }
+  }
+
+  @keyframes badge-pulse {
+    0%, 100% { 
+      transform: scale(1);
+      opacity: 1;
+    }
+    50% { 
+      transform: scale(1.05);
+      opacity: 0.9;
+    }
+  }
+
+  @keyframes emergency-pulse {
+    0% { transform: scale(1); box-shadow: var(--shadow-emergency); }
+    50% { transform: scale(1.05); box-shadow: 0 0 80px hsl(var(--status-critical)); }
+    100% { transform: scale(1); box-shadow: var(--shadow-emergency); }
+  }
+
+  @keyframes critical-pulse {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+  }
+
+  @keyframes critical-flash {
+    0% { opacity: 0.9; }
+    100% { opacity: 1; }
+  }
+
+  /* Accessibility - Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    .water-wave,
+    .water-shimmer,
+    .status-badge,
+    .status-icon-container,
+    .btn-emergency {
+      animation: none !important;
+      transition: none !important;
+    }
+
+    .water-fill-animated {
+      transition: height 0.3s ease-out;
+    }
+
+    .status-badge-critical {
+      animation: none;
+    }
+
+    .critical-overlay {
+      animation: none;
+    }
+  }
+
+  /* Utility Classes */
+  .gradient-text {
+    background: var(--gradient-primary);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .gradient-bg {
+    background: var(--gradient-primary);
+  }
+
+  .gradient-card {
+    background: var(--gradient-card);
+  }
+
+  .brand-gradient {
+    background: linear-gradient(135deg, #00D4FF, #0066FF);
+  }
+
+  .brand-gradient-hover {
+    background: linear-gradient(135deg, #00D4FF, #0066FF);
+    transform: scale(1.02);
+    box-shadow: 0 10px 40px rgba(0, 212, 255, 0.3);
+  }
+
+  .glow {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .text-glow {
+    text-shadow: 0 0 20px currentColor;
+  }
+
+  .brand-glow {
+    box-shadow: 0 0 30px rgba(0, 212, 255, 0.4), 0 0 60px rgba(0, 102, 255, 0.2);
+  }
+}
